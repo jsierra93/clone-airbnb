@@ -27,8 +27,7 @@ export class DetailComponent implements OnInit {
       const id = params._id;
       this.experienceService.getExperienceById(id).subscribe(
         response => {
-          this.experience = response.experience;
-        }
+          this.experience = response.experience;        }
       );
     });
   }

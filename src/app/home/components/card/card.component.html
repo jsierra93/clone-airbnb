@@ -1,6 +1,6 @@
 <a [routerLink]="['/detail/' + experiencie._id]">
-    <div [ngStyle]="{'background-image':'url('+ experiencie.image +')'}">
-        <h3>{{experiencie.description}}</h3>
-        <h4>{{experiencie.place}}</h4>
+    <div [ngStyle]="{'background-image':'url('+ experiencie?.image +')'}">
+        <h3>{{experiencie?.description}}</h3>
+        <h4>{{experiencie?.place}}</h4>
     </div>
 </a>
