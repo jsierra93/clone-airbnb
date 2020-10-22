@@ -1,0 +1,44 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Lato';
+}
+
+.form {
+    margin: 0 15px;
+    padding: 20px 20px;
+    border-radius: 15px;
+    box-shadow: 1px 2px 3px 0px rgba(167, 129, 129, 0.4);
+    background-color: rgb(255, 255, 255);
+    background-color: $bg-color;
+
+    .control-form {
+        border: 1px solid $border-color;
+        background-color: $while-color;
+        margin: 10px 0;
+        padding: 3px 4px;
+        border-radius: 5px;
+
+        label {
+            font-size: 0.9em;
+            color: $hof-color;
+            font-weight: 300;
+        }
+
+       input, textarea {
+           display: block;
+           width: 100%;
+           padding: 3px 0;
+           margin: 0;
+           background-color: transparent;
+           border: 0;
+           outline: none;
+           color: $hof-color;
+       }
+    }
+    .error {
+        font-size: 0.78em;
+        color: red;
+        margin: 0;
+    }
+}

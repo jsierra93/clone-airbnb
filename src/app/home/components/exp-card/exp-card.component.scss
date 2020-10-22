@@ -1,0 +1,42 @@
+@import '/src/styles/variables.scss';
+a{
+    text-decoration: none;
+    .exp-card {
+        box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.04);
+        background-color: rgb(255, 255, 255);
+        width: 100%;
+        height: 170px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        display: flex;
+        overflow: hidden;
+
+        .image {
+            justify-content: left;
+            width: 45%;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover; 
+            }
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-left: 15px;
+            color: $hof-color;
+            h3, h4{
+                margin: 0 12px;
+                padding: 0;
+            }
+            h3{
+                font-weight: 900;
+            }
+            h4{
+                font-weight: 400;
+            }
+        
+        }
+    }
+}

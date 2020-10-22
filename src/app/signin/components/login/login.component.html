@@ -1,0 +1,13 @@
+<section>
+    <form [formGroup]="formGroupLogin" class="form">
+        <div class="control-form">
+            <label>Usuario:</label>
+            <input formControlName="user" type="text" name="user">
+        </div>
+        <div class="control-form">
+            <label>Contraseña:</label>
+            <input formControlName="password" type="password" name="pasword">
+        </div>
+        <button (click)="login()" [disabled]="formGroupLogin.invalid">Iniciar sesión</button>
+    </form>
+</section>
