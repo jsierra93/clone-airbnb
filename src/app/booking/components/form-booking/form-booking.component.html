@@ -1,11 +1,6 @@
 <section>
     <form [formGroup]="formGroupBooking" class="form">
         <div class="control-form">
-            <label>Experience ID:</label>
-            <textarea formControlName="experience_id" name="experience_id"></textarea>
-        </div>
-        <span class="error"> {{ getError('experience_id') }} </span>
-        <div class="control-form">
             <label>Fecha Inicio:</label>
             <input formControlName="booking_date_start" type="date" name="booking_date_start">
         </div>
@@ -20,6 +15,6 @@
             <textarea formControlName="comments" name="comments"></textarea>
         </div>
         <span class="error"> {{ getError('comments') }} </span>
-        <button (click)="booking()" [disabled]="formGroupBooking.invalid">Rerservar</button>
+        <button (click)="booking()" [disabled]="formGroupBooking.invalid">Reservar</button>
     </form>
 </section>

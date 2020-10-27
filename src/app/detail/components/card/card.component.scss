@@ -1,7 +1,6 @@
 @import '/src/styles/variables.scss';
 
 .card-detail{
-
     border-radius: 12px;
     margin: 0 20px;
     overflow: hidden;
@@ -9,6 +8,7 @@
     background-color: rgb(255, 255, 255);
     img {
         width: 100%;
+        align-content: center;
     }
     p {
         font-weight: 400;

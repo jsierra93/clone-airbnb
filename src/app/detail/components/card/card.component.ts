@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IExperience } from 'src/app/shared/models/experiences.model';
 
 @Component({
@@ -10,9 +11,13 @@ export class CardComponent implements OnInit {
 
   @Input() experience: IExperience;
 
-  constructor() { }
+  constructor(private router: Router ) { }
 
   ngOnInit(): void {
+  }
+
+  public irReserva(id: string): void{
+    this.router.navigate(['/booking', id ]);
   }
 
 }

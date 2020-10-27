@@ -22,7 +22,7 @@ export const routes: Routes = [
       loadChildren: () => import('./detail/detail.module').then(mod => mod.DetailModule)
     },
     {
-      path: 'booking',
+      path: 'booking/:_id',
       loadChildren: () => import('./booking/booking.module').then(mod => mod.BookingModule)
     },
     {
