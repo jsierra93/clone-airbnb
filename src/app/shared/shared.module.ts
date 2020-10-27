@@ -12,8 +12,7 @@ import { TitleComponent } from './components/title/title.component';
   declarations: [TopbarComponent, ScoreComponent, TitleComponent],
   // el import importa modulos CommonModule es un modulo comun de angular
   imports: [
-    CommonModule
-  ],
+    CommonModule  ],
   //exports indica cuales son los componentes que van a quedar comportidos de este modulo 
   //para poder ser visibles en otros modulos
   exports: [

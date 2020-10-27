@@ -16,5 +16,7 @@
         </div>
         <span class="error"> {{ getError('comments') }} </span>
         <button (click)="booking()" [disabled]="formGroupBooking.invalid">Reservar</button>
+        <span class="response"> {{ errorHandler }} </span>
     </form>
+    
 </section>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute , Router} from '@angular/router';
 import { IExperience } from '../shared/models/experiences.model';
 import { ExperienceService } from 'src/app/services/experience/experience.service';
 
@@ -14,12 +14,19 @@ export class DetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private experienceService: ExperienceService) {
 
   }
 
   ngOnInit(): void {
     this.getParams();
+    if (localStorage.getItem('token') !== null ){
+      console.log('Token LocalStorage: '+localStorage.getItem('token'));
+    }else{
+      this.router.navigate(['/signin']);
+    }
+  
   }
 
   private getParams(): void {

@@ -13,9 +13,10 @@ export class FormBookingComponent implements OnInit {
   public formGroupBooking: FormGroup;
   private dataReserve: IReserve;
   @Input() experienceId?: string;
+  public errorHandler: string ;
 
   constructor(private formBuilder: FormBuilder,
-    private bookingService: BookingService
+    private bookingService: BookingService,
   ) { }
 
   ngOnInit(): void {
@@ -35,15 +36,14 @@ export class FormBookingComponent implements OnInit {
     const data = this.formGroupBooking.value;
     this.dataReserve = this.formGroupBooking.value;
     this.dataReserve.experience_id = this.experienceId;
+    console.log('Request /booking '+this.dataReserve);
     this.bookingService.reserve(this.dataReserve).subscribe(
       response => {
         if (response.status == 1) {
-          console.log(response);
-          //this.router.navigate(['/home']);
-          // localStorage.setItem('token', response.token);
+          console.log('Response /booking '+response);
+          this.errorHandler = 'Reserva exitosa : '+response.response._id;
         } else {
-          console.log('Reserva Fallida');
-          //this.responseLogin = 'Usuario/Clave incorrecta'
+          this.errorHandler = 'Reserva no realizada';
         }
       }
     );
@@ -90,8 +90,5 @@ export class FormBookingComponent implements OnInit {
     }
     return errorMessage;
   }
-
-
-
 
 }

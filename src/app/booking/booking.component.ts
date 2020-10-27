@@ -9,18 +9,18 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BookingComponent implements OnInit {
 
-  private id: string;
+  public id: string;
 
   constructor(private router: Router,
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getParams();
-   /* if (localStorage.getItem('token') !== null) {
+    if (localStorage.getItem('token') !== null) {
       console.log('Token LocalStorage: ' + localStorage.getItem('token'));
     } else {
       this.router.navigate(['/signin']);
-    }*/
+    }
   }
 
   private getParams(): void {

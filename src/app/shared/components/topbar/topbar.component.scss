@@ -3,9 +3,29 @@
 div {
     background-color: $rausch-color;
     padding: 5px 0;
+    text-align: center;
     h2 {
+        display: inline;
         color: #ffffff;
         margin: 0;
         text-align: center;
     }
+
+
+    a:link, a:visited, a:active {
+        text-decoration:none;
+    }
+
+
+}
+
+#icono {
+    display: inline;
+    position: absolute;
+    right: 20px;   
+    top: 5px;
+    background-color: transparent;
+    border: none;
+    color: white;
+    padding: 0;
 }

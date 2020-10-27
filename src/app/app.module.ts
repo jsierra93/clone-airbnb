@@ -14,6 +14,8 @@ import { SigninModule } from './signin/signin.module';
 import { BookingModule } from './booking/booking.module';
 
 import { AuthInterceptorService } from './services/auth/auth-interceptor.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
   declarations: [
@@ -30,8 +32,8 @@ import { AuthInterceptorService } from './services/auth/auth-interceptor.service
     SigninModule,
     BookingModule,
     HttpClientModule,
-    
-  ],
+    BrowserAnimationsModule
+    ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
