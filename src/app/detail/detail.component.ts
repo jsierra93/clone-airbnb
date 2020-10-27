@@ -21,9 +21,7 @@ export class DetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getParams();
-    if (localStorage.getItem('token') !== null ){
-      console.log('Token LocalStorage: '+localStorage.getItem('token'));
-    }else{
+    if (localStorage.getItem('token') === null ){
       this.router.navigate(['/signin']);
     }
   

@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     this.dataLogin = this.formGroupLogin.value;
     this.userService.login(this.dataLogin).subscribe(
       response => {
-        if (response.status == 1) {
+        if (response.status === 1) {
            this.router.navigate(['/home']);
            localStorage.setItem('token', response.token);
         }else{

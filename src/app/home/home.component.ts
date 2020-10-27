@@ -11,9 +11,7 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    if (localStorage.getItem('token') !== null ){
-      console.log('Token LocalStorage: '+localStorage.getItem('token'));
-    }else{
+    if (localStorage.getItem('token') === null ){
       this.router.navigate(['/signin']);
     }
   

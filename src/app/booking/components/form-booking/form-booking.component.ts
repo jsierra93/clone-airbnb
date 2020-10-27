@@ -21,7 +21,7 @@ export class FormBookingComponent implements OnInit {
 
   ngOnInit(): void {
     this.formBookingInit();
-    console.log('Parametro: '+this.experienceId)
+    console.log('Experience ID: '+this.experienceId)
   }
 
   private formBookingInit(): void {
