@@ -16,9 +16,9 @@ export class BookingComponent implements OnInit {
 
   ngOnInit(): void {
     this.getParams();
-    if (localStorage.getItem('token') === null ){
+   /* if (localStorage.getItem('token') === null ){
       this.router.navigate(['/signin']);
-    }
+    }*/
   }
 
   private getParams(): void {

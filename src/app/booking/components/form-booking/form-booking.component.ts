@@ -13,7 +13,7 @@ export class FormBookingComponent implements OnInit {
   public formGroupBooking: FormGroup;
   private dataReserve: IReserve;
   @Input() experienceId?: string;
-  public errorHandler: string ;
+  public errorHandler: string;
 
   constructor(private formBuilder: FormBuilder,
     private bookingService: BookingService,
@@ -21,7 +21,7 @@ export class FormBookingComponent implements OnInit {
 
   ngOnInit(): void {
     this.formBookingInit();
-    console.log('Experience ID: '+this.experienceId)
+    console.log('Experience ID: ' + this.experienceId)
   }
 
   private formBookingInit(): void {
@@ -29,19 +29,33 @@ export class FormBookingComponent implements OnInit {
       booking_date_start: ['', [Validators.required, this.validateDate]],
       booking_date_end: ['', [Validators.required, this.validateDate]],
       comments: ['', Validators.required]
+    }, {
+      validators: this.validateDateRange()
     });
   }
+
+  private validateDateRange() {
+    return (formGroup: FormGroup) => {
+      const controlBookingDateStart = formGroup.controls['booking_date_start'];
+      const controlBookingDateEnd = formGroup.controls['booking_date_end'];
+
+      if (new Date(controlBookingDateStart.value) > new Date(controlBookingDateEnd.value)) {
+        controlBookingDateEnd.setErrors({ mustGreaterThan: true })
+      }
+    }
+  }
+
 
   public booking(): void {
     const data = this.formGroupBooking.value;
     this.dataReserve = this.formGroupBooking.value;
     this.dataReserve.experience_id = this.experienceId;
-    console.log('Request /booking '+this.dataReserve);
+    console.log('Request /booking ' + this.dataReserve);
     this.bookingService.reserve(this.dataReserve).subscribe(
       response => {
         if (response.status == 1) {
-          console.log('Response /booking '+response);
-          this.errorHandler = 'Reserva exitosa : '+response.response._id;
+          console.log('Response /booking ' + response);
+          this.errorHandler = 'Reserva exitosa : ' + response.response._id;
         } else {
           this.errorHandler = 'Reserva no realizada';
         }
@@ -71,6 +85,7 @@ export class FormBookingComponent implements OnInit {
   public getError(controlName: string) {
     let error = '';
     const control = this.formGroupBooking.get(controlName);
+    console.log(control.getError);
     if (control.touched && control.errors != null) {
       error = this.errorMapping(control.errors)
     }
@@ -78,7 +93,7 @@ export class FormBookingComponent implements OnInit {
   }
 
   private errorMapping(errors: any) {
-    console.log('errors', errors)
+
     let errorMessage = '';
 
     if (errors.required) {
@@ -88,6 +103,11 @@ export class FormBookingComponent implements OnInit {
     if (errors.dateError) {
       errorMessage += errors.dateError;
     }
+
+    if (errors.mustGreaterThan) {
+      errorMessage += 'La fecha final debe ser mayor que la fecha inicial. ';
+    }
+
     return errorMessage;
   }
 
