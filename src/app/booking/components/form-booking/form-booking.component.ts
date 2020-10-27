@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { BookingService } from 'src/app/services/booking/booking.service';
+import { IReserve } from 'src/app/shared/models/reserveRequest.model';
 
 @Component({
   selector: 'app-form-booking',
@@ -9,8 +11,11 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 export class FormBookingComponent implements OnInit {
 
   public formGroupBooking: FormGroup;
+  private dataReserve : IReserve;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,
+    private bookingService: BookingService
+    ) { }
 
   ngOnInit(): void {
     this.formBookingInit();
@@ -18,14 +23,30 @@ export class FormBookingComponent implements OnInit {
 
   private formBookingInit():void {
     this.formGroupBooking = this.formBuilder.group({
-      date: ['', [Validators.required, this.validateDate]],
-      description: ['', Validators.required]
+      booking_date_start: ['', [Validators.required, this.validateDate]],
+      booking_date_end: ['', [Validators.required, this.validateDate]],
+      experience_id:['', Validators.required],
+      comments: ['', Validators.required]
     });
   }
 
   public booking(): void {
     const data = this.formGroupBooking.value;
-    console.log('Informacion de reserva ', data);
+    this.dataReserve = this.formGroupBooking.value;
+    console.log('Informacion de reserva ', this.dataReserve);
+    this.bookingService.reserve(this.dataReserve).subscribe(
+      response => {
+        if (response.status == 1) {
+          console.log(response);
+           //this.router.navigate(['/home']);
+          // localStorage.setItem('token', response.token);
+        }else{
+          console.log('Reserva Fallida');
+          //this.responseLogin = 'Usuario/Clave incorrecta'
+        }
+      }
+    );
+
   }
 
   public validateDate(control: AbstractControl){
