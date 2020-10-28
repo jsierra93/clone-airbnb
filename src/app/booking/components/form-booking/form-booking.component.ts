@@ -85,7 +85,6 @@ export class FormBookingComponent implements OnInit {
   public getError(controlName: string) {
     let error = '';
     const control = this.formGroupBooking.get(controlName);
-    console.log(control.getError);
     if (control.touched && control.errors != null) {
       error = this.errorMapping(control.errors)
     }

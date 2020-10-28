@@ -16,8 +16,8 @@ export class CardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public irReserva(id: string): void{
-    this.router.navigate(['/booking', id ]);
+  public irReserva(): void{
+    this.router.navigate(['/booking', this.experience._id ]);
   }
 
 }
